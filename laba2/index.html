@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cards</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="search-block">
+	<input class="search-field" v-model="input" >
+</div>
+<div class="card-container">
+	<ol>
+	  <li v-for="element in arr"
+	      v-if="!element.indexOf(input) > 0">
+	     <div class="card"> <p class="card-text"> {{element}} </p> </div>
+	  </li>
+	</ol>
+</div>
+  </div>
+
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+	  el: "#app",
+	  data: {
+	    name: "Иван",
+		input: "",
+		arr: [
+		  "Повседневная практика показывает, что консультация с широким активом способствует подготовки и реализации модели развития",
+		  "Идейные соображения высшего порядка, а также постоянный количественный рост",
+		  "Товарищи! реализация намеченных плановых заданий позволяет выполнять важные задания по разработке форм развития",
+      "Постоянное информационное обеспечение нашей деятельности способствует подготовки и реализации системы обучения кадров",
+      "Задача организации, в особенности же начало повседневной работы по формированию позиции позволяет выполнять важные задания",
+      "Начало повседневной работы по формированию позиции играет важную роль в формировании систем массового участия",
+      "Разнообразный и богатый опыт рамки и место обучения кадров требуют от нас анализа систем массового участия."
+		]
+	  },
+	  methods: {
+	    changeName: function() {
+		  if (this.input === "") {
+		    alert("Введите имя!!!")
+		  } else {
+			this.name = this.input
+
+			if (!this.arr.some(() => this.input)) {
+			  this.arr.push(this.input)
+			} else {
+			  alert("Дубликат")
+			}
+
+			this.input = ""
+		  }
+		}
+	  }
+	})
+  </script>
+</body>
+</html>
